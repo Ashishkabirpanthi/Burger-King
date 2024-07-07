@@ -4,6 +4,40 @@ const navMenu = document.getElementById('nav-menu'),
 const navLink = document.querySelectorAll(".nav__link");
 const sections = document.querySelectorAll('section[id]')
 
+
+function splitH2() {
+    var text = document.querySelector(".delivery__data h2");
+    var splitText = text.textContent;
+    var clutter = "";
+
+    // Create a span element for each character
+    splitText.split("").forEach(function (elem) {
+        var spanElem = document.createElement("span");
+        spanElem.textContent = elem; // Set the text content of the span element
+        clutter += spanElem.outerHTML; // Convert the span element to a string and append it to clutter
+    });
+
+    text.innerHTML = clutter; // Update the innerHTML of the original text element
+}
+splitH2();
+
+function splitP() {
+    var text = document.querySelector(".delivery__data p");
+    var splitText = text.textContent;
+    var clutter = "";
+
+    // Create a span element for each character
+    splitText.split("").forEach(function (elem) {
+        var spanElem = document.createElement("span");
+        spanElem.textContent = elem; // Set the text content of the span element
+        clutter += spanElem.outerHTML; // Convert the span element to a string and append it to clutter
+    });
+
+    text.innerHTML = clutter; // Update the innerHTML of the original text element
+}
+splitP();
+
+
 if(navToggle){
     navToggle.addEventListener('click', () => {
         navMenu.classList.add('show-menu');
@@ -67,7 +101,6 @@ const scrollActive = () =>{
 }
 window.addEventListener('scroll', scrollActive)
 
-
 gsap.from(".nav__menu li" ,{
     y:-30,
     opacity:0,
@@ -128,6 +161,38 @@ gsap.from(".popular__card",{
     duration:0.5,
     stagger:0.18,
     scrollTrigger:".popular__card"
+})
+
+gsap.from(".delivery__data h2 span",{
+    opacity:0,
+    delay:0.8,
+    duration:1,
+    stagger:0.04,
+    scrollTrigger:".delivery__data h2 span"
+})
+
+gsap.from(".delivery__data p span",{
+    opacity:0,
+    delay:0.8,
+    duration:0.2,
+    stagger:0.015,
+    scrollTrigger:".delivery__data p span"
+})
+
+gsap.from(".delivery__data img, .delivery__data a",{
+    opacity:0,
+    delay:1,
+    duration:1,
+    stagger:0.04,
+    scrollTrigger:".delivery__data img, .delivery__data a"
+})
+
+gsap.from(".delivery__img",{
+    x:-1300,
+    delay:0.3,
+    duration:4,
+    ease:"power2.out",
+    scrollTrigger:".delivery__img"
 })
 
 gsap.from(".contact__image" ,{

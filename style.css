@@ -462,10 +462,11 @@ img{
 }
 
 .delivery__img{
-    width: 800px;
+    width: 400px !important;
     justify-self: center;
     filter: var(--shadow-big-img);
 }
+
 
 .contact__container{
     position: relative;
